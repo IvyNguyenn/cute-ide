@@ -1,0 +1,44 @@
+.editor {
+  display: flex;
+  height: 99vh;
+  &__code {
+    flex: 50% 1;
+    &__controls {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      button {
+        padding: 12px 20px;
+        background-color: var(--green);
+        border: 0;
+        border-radius: 9999px;
+        color: white;
+        font-weight: 600;
+        line-height: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+  &__output {
+    display: flex;
+    flex-direction: column;
+    flex: 50% 1;
+    flex-shrink: 0;
+    border-left: 1px solid var(--lightgray);
+    div:first-child {
+      padding: 20px;
+      border-bottom: 1px solid var(--lightgray);
+    }
+    &__result {
+      font-family: Consolas, Arial, Helvetica, sans-serif;
+      padding: 20px;
+      flex-grow: 1;
+      overflow: auto;
+      > * {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
