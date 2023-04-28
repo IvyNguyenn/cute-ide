@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ViewUpdate } from '@codemirror/view';
 import CodeMirror from '@uiw/react-codemirror';
@@ -28,6 +28,13 @@ int main(void) {
     status: { id: 0, description: '' },
   });
   const [error, setError] = useState(undefined);
+  const [prefersColorScheme, setPrefersColorScheme] = useState(false);
+
+  useEffect(() => {
+    setPrefersColorScheme(
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
+  }, []);
 
   const _handleChangeCode = (value: string, _viewUpdate: ViewUpdate) => {
     setCode(value);
@@ -95,11 +102,6 @@ int main(void) {
     }
   };
 
-  const prefersColorScheme = window.matchMedia(
-    '(prefers-color-scheme: dark)'
-  ).matches;
-  const mode = prefersColorScheme ? 'dark' : 'light';
-
   return (
     <div className={styles.editor}>
       <div className={styles.editor__code}>
@@ -129,7 +131,7 @@ int main(void) {
         <CodeMirror
           value={code}
           height="92vh"
-          theme={mode}
+          theme={prefersColorScheme ? 'dark' : 'light'}
           extensions={[javascript({ jsx: true })]}
           onChange={_handleChangeCode}
         />
@@ -208,17 +210,3 @@ const programingLanguages = [
   { id: 73, name: 'Rust (1.40.0)' },
   { id: 74, name: 'TypeScript (3.7.4)' },
 ];
-
-interface SubmissionResult {
-  stdout: string;
-  time: string;
-  memory: number;
-  stderr: any;
-  token: string;
-  compile_output: any;
-  message: string | null;
-  status: {
-    id: number;
-    description: string;
-  };
-}

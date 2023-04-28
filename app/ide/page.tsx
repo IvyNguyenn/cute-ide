@@ -1,5 +1,5 @@
-import MyCodeMirror from './(components)/CodeMirror';
+import CodeMirror from './(components)/CodeMirror';
 
 export default async function Ide() {
-  return <MyCodeMirror {...process.env} />;
+  return <CodeMirror {...process.env} />;
 }
