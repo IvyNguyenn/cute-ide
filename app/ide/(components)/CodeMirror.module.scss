@@ -17,6 +17,7 @@
         color: white;
         font-weight: 600;
         line-height: 1rem;
+        flex-shrink: 0;
         cursor: pointer;
         &:disabled {
           opacity: 0.7;
@@ -29,7 +30,9 @@
     flex-direction: column;
     flex: 50% 1;
     flex-shrink: 0;
-    border-left: 1px solid var(--lightgray);
+    border: 1px solid var(--lightgray);
+    border-right: 0;
+    border-bottom: 0;
     &__output {
       display: flex;
       flex-direction: column;
@@ -65,6 +68,31 @@
         top: 0;
         font-size: small;
         color: gray;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767.99px) {
+  .editor {
+    flex-direction: column;
+    &__code {
+      &__controls {
+        ~ div {
+          height: 45vh;
+          overflow: auto;
+        }
+      }
+    }
+    &__console {
+      flex: auto 1;
+      &__output {
+        height: 35vh;
+      }
+      &__input {
+        textarea {
+          height: 80%;
+        }
       }
     }
   }

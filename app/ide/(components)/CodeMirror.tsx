@@ -116,7 +116,6 @@ int main(void) {
             <select
               name="language"
               defaultValue={programingLanguages[3].id}
-              style={{ flexShrink: 0 }}
               disabled={isSubmitting}
             >
               {programingLanguages.map((language) => (
