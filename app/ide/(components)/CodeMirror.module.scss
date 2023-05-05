@@ -78,17 +78,19 @@
     flex-direction: column;
     height: 92vh;
     &__code {
+      flex: initial;
       &__controls {
         ~ div {
-          height: 45vh;
+          height: 50vh;
           overflow: auto;
         }
       }
     }
     &__console {
+      border-left: 0;
       flex: auto 1;
       &__output {
-        height: 73%;
+        height: 72%;
       }
       &__input {
         textarea {
